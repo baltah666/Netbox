@@ -1,0 +1,15 @@
+
+---
+- name: create config using netbox
+  connection: local
+   hosts: device_roles_router,device_roles_switch
+   gather_facts: False
+  vars:
+    ansible_python_interpreter: auto_legacy_silent
+
+  tasks:
+   - name: "Generate configs using data obtained from netbox"
+     template:
+       src: "./templets/config_templete.j2"
+       dest: "./outpu/{{ inventory_hostname }}.cfg"
+       lstrip_blocks: yes

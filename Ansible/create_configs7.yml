@@ -1,0 +1,20 @@
+---
+- name: create config using netbox
+  connection: local
+  hosts: device_roles_router,device_roles_switch
+  gather_facts: False
+  vars:
+    ansible_python_interpreter: auto_legacy_silent
+
+  task:
+    - name: show running config on device
+      ios_command:
+        commands:
+             - show run
+      register: config
+
+    - name: save output to backups folder
+      copy:
+         content: "{{ config.stdout[0]}}"
+         dest: "./backups/{{inventory_hostname }}-config.txt"
+...

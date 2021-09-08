@@ -1,0 +1,16 @@
+- name: "Test Netbox modules"
+  connection: local
+  hosts: localhost
+  gather_facts: False
+
+  tasks:
+    - name: Create device within Netbox with only required information
+      netbox_device:
+        netbox_url: http://192.168.174.149:8000
+        netbox_token: 0123456789abcdef0123456789abcdef01234567
+        data:
+          name: Test Device
+          device_type: C9410R
+          device_role: Core Switch
+          site: Main
+        state: present
