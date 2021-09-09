@@ -14,6 +14,8 @@ json_data = response.json()
 results = json_data['results']
 
 for device in results:
-	hostname = device ['name']
-	ipaddr = device ['primary_ip']['address']
-	print('The IP address of' + hostname + 'is' + ipaddr)
+    hostname = device['name']
+    sites = device['site']['name']
+#    ipaddr = device['primary_ip']['address']
+    print(' The Site for this ' + hostname + ' is ' + sites )
+#    print('The IP address of' + hostname + 'is' + ipaddr)
