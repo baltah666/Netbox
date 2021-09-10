@@ -1,0 +1,16 @@
+---
+plugin: netbox
+#plugin: netbox.netbox.nb_inventory
+api_endpoint: http://192.168.174.149:8000/
+token: 0123456789abcdef0123456789abcdef01234567
+validate_certs: False
+config_context: False
+group_by:
+#  - tags
+   - device_roles
+   - sites
+#  - device_type
+#   - platforms
+query_filters:
+  - status: "active"
+
